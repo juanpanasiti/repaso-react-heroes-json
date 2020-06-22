@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./assets/css/App.css";
+import { Switch, Route } from "react-router-dom";
+import ListaHeroes from "./components/ListaHeroes";
+import DetalleHeroe from "./components/DetalleHeroe";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        <Route exact path="/">
+          <ListaHeroes></ListaHeroes>
+        </Route>
+        <Route exact path="/heroes-dc">
+          <ListaHeroes></ListaHeroes>
+        </Route>
+        <Route exact path="/heroes-marvel">
+          <ListaHeroes></ListaHeroes>
+        </Route>
+
+        <Route exact path="/detalle-heroe/:id" component={DetalleHeroe} />
+        <Route exact path="/buscar/:clave" component={ListaHeroes} />
+      </Switch>
     </div>
   );
 }
